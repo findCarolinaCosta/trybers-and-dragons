@@ -1,6 +1,6 @@
 import { Mage } from './Archetypes';
 import Energy from './Energy';
-import Fighter from './Fighter';
+import Fighter, { SimpleFighter } from './Fighter';
 import IArchetype from './Interfaces/IArchetype';
 import IRace from './Interfaces/IRace';
 import { Elf } from './Races';
@@ -74,7 +74,7 @@ class Character implements Fighter {
     return this.lifePoints;
   }
 
-  attack(enemy: Fighter): void {
+  attack(enemy: Fighter | SimpleFighter): void {
     enemy.receiveDamage(this.strength);
   }
 
