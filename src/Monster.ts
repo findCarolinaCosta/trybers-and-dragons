@@ -1,6 +1,6 @@
 import { SimpleFighter } from './Fighter';
 
-class Monter implements SimpleFighter {
+class Monster implements SimpleFighter {
   protected _lifePoints = 85;
   private _strength = 63;
 
@@ -27,4 +27,4 @@ class Monter implements SimpleFighter {
   }
 }
 
-export default Monter;
+export default Monster;

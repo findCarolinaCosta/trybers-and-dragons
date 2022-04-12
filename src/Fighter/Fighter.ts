@@ -10,7 +10,7 @@ export interface IFighterAttributes {
 
 interface Fighter extends IFighterAttributes {
   attack(enemy: IFighterAttributes | SimpleFighter): void;
-  special(enemy: IFighterAttributes): void;
+  special(enemy: IFighterAttributes | SimpleFighter): void;
   levelUp(): void;
   receiveDamage(attackPoints: number): void;
 }
