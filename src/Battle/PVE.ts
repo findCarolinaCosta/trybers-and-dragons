@@ -5,31 +5,33 @@ import Battle from './Battle';
 type Bot = IMonster[] | Fighter[] | SimpleFighter[];
 
 class PVE extends Battle {
-  _player1: Fighter;
-  _bot: Bot;
+  private _player1: Fighter;
+  private _bots: Bot;
 
   constructor(
     player: Fighter, 
-    bot: Bot,
+    bots: Bot,
   ) {
     super(player);
 
     this._player1 = player;
-    this._bot = bot;
+    this._bots = bots;
   }
 
   get player1(): Fighter {
     return this._player1;
   }
 
-  get bot(): Bot {
-    return this._bot;
+  get bots(): Bot {
+    return this._bots;
   }
 
   fight(): number {
-    this.bot.forEach((bot) => {
-      this.player1.attack(bot);
-      bot.attack(this.player1);
+    this.bots.forEach((bot) => {
+      while (bot && bot.lifePoints > 0 && this._player1.lifePoints > 0) {
+        this.player1.attack(bot);
+        bot.attack(this.player1);
+      }
     });
 
     return this.player1.lifePoints === -1 ? -1 : 1;
